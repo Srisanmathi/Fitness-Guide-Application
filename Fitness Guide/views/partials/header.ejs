@@ -1,0 +1,16 @@
+<header id="header">
+    <% if(isLogin){ %>
+            <p id="sign-in">Logged in as <%= theCurrentUser.firstName %></p>
+        <% } else{ %>
+        <p id="sign-in">Not signed in</p>
+        <%}%>    
+        <div class='main-float'>
+                <div class="left-float">
+                    <img id="logo" src = "/assets/images/logo.png" alt = "logo" />
+                </div>    
+            <div class="right-float">
+                <h1 id="head">FITNESS GUIDE</h1>
+            </div>
+        </div>
+        
+    </header>

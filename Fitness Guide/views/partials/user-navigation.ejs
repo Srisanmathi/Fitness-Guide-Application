@@ -1,0 +1,12 @@
+<nav class="topnav">
+        <ul>
+                <%if(isLogin){%>
+                    <li><a href="/user/logout">Sign Out</a></li>
+                    <%}else{%>
+                    <li><a href="/user/login">Sign In</a></li>
+                    <%}%>
+            
+            <li><a href="/user/myItems">Saved Items</a></li>
+            <li><a href="">Cart</a></li>
+        </ul>
+    </nav>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            
+            <%= data.title %>
+        </title>
+        <link rel="icon" href="http://example.com/favicon.png">
+        <meta charset="UTF-8">
+        <meta name="description" content="Exercise and nutrition tutorials">
+        <meta name="keywords" content="exercise, workout, body, head, shoulder, legs">
+        <meta name="author" content="Srisanmathi">
+        <meta http-equiv="refresh" content="120">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/assets/images/nutrition.png" type="image/gif" >
+        <link rel="stylesheet" type="text/css" href="/assets/stylesheets/style.css">
+        <!--[if lt IE 9]>
+        <script>
+            document.createElement("header");
+            document.createElement("footer");
+            document.createElement("main");
+            document.createElement("aside");
+            document.createElement("nav");
+            document.createElement("section");
+            document.createElement("article");
+        </script>
+        <![endif]-->
+        <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+       
+    </head>
+<body>
+    <% include partials/header.ejs %>
+    <% include partials/user-navigation.ejs %>
+    <% include partials/site-navigation.ejs %>
+    
+    <main>
+           
+        <p class="category-def">It's time you find a perfect balance between your diet and exercise. Get ideas for a better living!</p>
+        
+
+        <img src="/assets/images/BetterApproachToHealth.png" alt="Health" width="710" height="300">
+        
+        
+        <div >
+            <ul class="category-sub-link">
+                <li>
+        <%for(var j=0;j<category.length; j++){%>
+            <h3><%= category[j] %></h3>
+
+        <%for(var i=0;i<items.length; i++){%>
+            <% if (items[i].catalogCategory == category[j]) { %>
+                <ul>
+              <li class="w"><a class="innerlink" href="/categories/item/<%= items[i].itemCode %>"><img src="<%= items[i].imageURL %>" alt="Health" width="30" height="15"><%= items[i].itemName %></a></li>
+            </ul>
+              <% }  %>
+              <%}%>
+
+              <%}%>
+            </li>
+            </ul>
+        </div>
+</main>
+    
+    
+    <% include partials/footer.ejs %>
+    
+</body>
+
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            <%= data.title %>
+        </title>
+        <link rel="icon" href="http://example.com/favicon.png">
+        <meta charset="UTF-8">
+        <meta name="description" content="Exercise and nutrition tutorials">
+        <meta name="keywords" content="exercise, workout, body, head, shoulder, legs">
+        <meta name="author" content="Srisanmathi">
+        <meta http-equiv="refresh" content="120">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="/assets/stylesheets/style.css">
+        <!--[if lt IE 9]>
+        <script>
+            document.createElement("header");
+            document.createElement("footer");
+            document.createElement("main");
+            document.createElement("aside");
+            document.createElement("nav");
+            document.createElement("section");
+            document.createElement("article");
+        </script>
+        <![endif]-->
+        <link rel="icon" href="/assets/images/nutrition.png" type="image/gif" >
+        <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+       
+    </head>
+<body>
+    <% include ./partials/header.ejs %>
+    <% include ./partials/user-navigation.ejs %>
+    <% include ./partials/site-navigation.ejs %>
+    
+   
+    
+    <main>
+        <p>This is a very good source for your health. </p>
+        <img src="/assets/images/stayingHealthy.png" alt="Stay Healthy" class="image" >
+        <p>Get the latest recipes and workout exercises for your body!</p>
+    </main>
+    <% include ./partials/footer.ejs %>
+    
+</body>
+
+
+</html>

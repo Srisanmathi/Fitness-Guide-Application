@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Items</title>
+        <link rel="icon" href="http://example.com/favicon.png">
+        <meta charset="UTF-8">
+        <meta name="description" content="Exercise and nutrition tutorials">
+        <meta name="keywords" content="exercise, workout, body, head, shoulder, legs">
+        <meta name="author" content="Srisanmathi">
+        <meta http-equiv="refresh" content="120">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="/assets/stylesheets/style.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="icon" href="/assets/images/nutrition.png" type="image/gif" >
+        <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+
+    <body >
+        <% include partials/header.ejs %>
+        <% include partials/user-navigation.ejs %>
+        <% include partials/site-navigation.ejs %>
+        
+        <main>
+            <h3>
+                Saved Items<%= data.itemCode %>
+            </h3>
+            <table class="saved-table"> 
+                <tr>
+                    <th></th>
+                    <th>Item</th>
+                    <th>Category</th> 
+                    <th>My Rating</th>
+                    <th>Followed it</th>
+                    <th>Actions</th>
+                    <th></th>
+                </tr>
+                <%for(i=0; i<data.length; i++){%>
+                
+                <tr>
+                    <td>
+                        <i class="material-icons">account_circle</i>
+                    </td>
+                    <td><%=data[i].itemName%></td>
+                    <td><%=data[i].catalogCategory%></td> 
+                    <td>    
+                                                                      
+                        <% for (var j = 1 ; j <= data[i].rating  ; j++){%>
+                            <img src="https://img.icons8.com/color/48/000000/filled-star.png" alt="rating" width="30">
+                        <%}%>
+                                                            
+                    </td>   
+                    <td>
+                        Made: <input disabled type="checkbox" name="read" <% if(data[i].readIt == "true"){%>checked<%}%>>
+                                                                     
+                    </td>   
+                    <td>
+                        <form action="/user/update/<%=data[i].itemCode%>" method="POST">
+                            <input type="hidden" name="itemCode" value="<%=data[i].itemCode%>">
+                                
+                            <%for(var j=0; j<data.length; j++){%>
+                                <input type="hidden" name="itemList" value="<%=data[i].itemCode%>">  
+                            <%}%>
+                            <input type="submit" name="update" class=".button" value="Update">
+                        </form>
+                    </td>   
+                    <td>
+                        <form action="/user/delete/<%=data[i].itemCode%>" method="POST">
+                            <input type="hidden" name="itemCode" value="<%=data[i].itemCode%>">
+                                    
+                            <%for(var k=0; k<data.length; k++){%>
+                                <input type="hidden" name="itemList" value="<%=data[i].itemCode%>">  
+                            <%}%>
+                            <input type="submit" name="delete" class=".button" value="Delete">
+                        </form>
+                    </td>
+                <%}%>
+                
+                     
+            </table>
+            <p class="clickStyle">  
+                <i class="material-icons">
+                    account_circle
+                </i>indicates this item belongs to you.
+            </p>
+            <p>
+                Click <a class="innerlink" href=""> here</a>  to share a new recipe!
+            </p>
+        </main>
+    
+    
+    <% include partials/footer.ejs %>
+    
+</body>
+
+
+</html>

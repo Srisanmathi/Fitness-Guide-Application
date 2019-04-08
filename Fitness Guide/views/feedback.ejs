@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            <%= data.title %>
+        </title>
+        <link rel="icon" href="http://example.com/favicon.png">
+        <meta charset="UTF-8">
+        <meta name="description" content="Exercise and nutrition tutorials">
+        <meta name="keywords" content="exercise, workout, body, head, shoulder, legs">
+        <meta name="author" content="Srisanmathi">
+        <meta http-equiv="refresh" content="120">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" type="text/css" href="/assets/stylesheets/style.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+        <!--[if lt IE 9]>
+        <script>
+            document.createElement("header");
+            document.createElement("footer");
+            document.createElement("main");
+            document.createElement("aside");
+            document.createElement("nav");
+            document.createElement("section");
+            document.createElement("article");
+        </script>
+        <![endif]-->
+        <link rel="icon" href="/assets/images/nutrition.png" type="image/gif" >
+        <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+    </head>
+<body>
+    <% include partials/header.ejs %>
+    <% include partials/user-navigation.ejs %>
+    <% include partials/site-navigation.ejs %>
+    
+   
+    
+    <main>
+        <h3>
+            Give your feedback 
+        </h3>
+        <div class="main-float">
+            <div class="left-float">
+                    
+                <img src="<%=item.imageURL%>" alt="" width="360" >
+            </div>   
+            <div class="right-float">
+                
+                        <h2 ><%=item.itemName%></h2>
+                        <p><%=item.catalogCategory%></p>
+
+                        <form action="/user/updateRating/<%=item.itemCode%>" method="POST">
+                           
+                                <span>Rating : </span>
+                                <select name="rate">
+                                    <option value="0" <%if(userItem.rating == 0){%>selected<%}%>>0</option>
+                                    <option value="1" <%if(userItem.rating == 1){%>selected<%}%>>1</option>
+                                    <option value="2" <%if(userItem.rating == 2){%>selected<%}%>>2</option>
+                                    <option value="3" <%if(userItem.rating == 3){%>selected<%}%>>3</option>
+                                    <option value="4" <%if(userItem.rating == 4){%>selected<%}%>>4</option>
+                                    <option value="5" <%if(userItem.rating == 5){%>selected<%}%>>5</option>
+                                </select>
+                        
+                                <input type="submit" class=".button" value="Update Rating">
+                           
+                        </form>
+                        <form action="/user/updateFlag/<%=item.itemCode%>" method="POST">
+                           
+                            
+                            <span>Followed it : </span>
+                            
+                                <input type="radio" id="read_yes" name="readit" value="true" <%if(userItem.readIt == 'true'){%>checked<%}%>/>
+                                <label for="read_yes">Yes</label>
+                                <input type="radio" id="read_no" name="readit" value="false" <%if(userItem.readIt == 'false'){%>checked<%}%>/>
+                                <label for="read_no">No</label>
+                            
+                        
+                       
+                            <input type="submit" class=".button" value="Update Flag">
+                       
+                    </form>
+
+                       
+                                
+                            
+                        
+                                
+                        
+                
+               
+            </div>
+            
+            <p id="intro" class="clear"><%=item.description%></p>
+            
+        </div>
+        <form action="/categories">
+            <button type="submit"  class=".button">Return to Categories</button>
+    </form>
+    </main>
+    <% include partials/footer.ejs %>
+    
+</body>
+
+
+</html>

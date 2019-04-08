@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Fitness Guide
+        </title>
+        <link rel="icon" href="http://example.com/favicon.png">
+        <meta charset="UTF-8">
+        <meta name="description" content="Exercise and nutrition tutorials">
+        <meta name="keywords" content="exercise, workout, body, head, shoulder, legs">
+        <meta name="author" content="Srisanmathi">
+        <meta http-equiv="refresh" content="120">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="/assets/stylesheets/style.css">
+        <!--[if lt IE 9]>
+        <script>
+            document.createElement("header");
+            document.createElement("footer");
+            document.createElement("main");
+            document.createElement("aside");
+            document.createElement("nav");
+            document.createElement("section");
+            document.createElement("article");
+        </script>
+        <![endif]-->
+        <link rel="icon" href="/assets/images/nutrition.png" type="image/gif" >
+        <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+       
+    </head>
+<body>
+    <% include ./partials/header.ejs %>
+    <% include ./partials/user-navigation.ejs %>
+    <% include ./partials/site-navigation.ejs %>
+    
+    <main>
+        <div class="main-float">
+            <div class="left-float">
+                <img src="<%= data.imageURL %>" alt="" width="360" >
+            </div>   
+            <div class="right-float">
+                
+                        <h2 ><%= data.itemName %></h2>
+                        <p><%= data.catalogCategory %></p>
+                        <% for (var i = 1 ; i <=data.rating ; i++)
+                        { %>
+                            <img src="https://img.icons8.com/color/48/000000/filled-star.png" alt="rating" width="30">
+                       <% } %>
+                        
+                       <%if(isLogin){%>
+                                <form action="/user/save/<%=data.itemCode%>" method="POST">
+                                    <input type="hidden" name="itemCode" value="<%= data.itemCode %>">
+                                    <input type="hidden" name="itemList" value="<%= data.itemCode %>">
+                                    <input type="submit" class=".button" id="save" value="&#10084; Save">
+                                </form>    
+                                <br>
+                                    
+                                        <form action="/user/update/<%=data.itemCode%>" method="POST">   
+                                            <input type="hidden" name="itemCode" value="<%= data.itemCode %>">
+                                    <input type="hidden" name="itemList" value="<%= data.itemCode %>">                        
+                                            <input type="submit" class=".button" id="rate" value="&#9734; Rate">
+                                        </form>
+                                        <%}%>       
+                                
+                                        
+                       
+                                
+                            
+                        
+                                
+                        
+                
+               
+            </div>
+            
+            <p id="intro" class="clear"><%= data.description %></p>
+            
+        </div>
+        <form action="/categories">
+            <button type="submit"  class=".button">Return to Categories</button>
+    </form>
+        <!-- <a id="link-back" href = "/categories" >Return to Categories</a> -->
+    </main>
+    
+    
+    <% include ./partials/footer.ejs %>
+    
+</body>
+
+
+</html>
